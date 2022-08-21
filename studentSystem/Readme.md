@@ -1,15 +1,15 @@
 <!-- to solve a django project interview question by geoProject -->
 
-# Introduction
+## Introduction
 This app contains a list of students in a school with activites that they can participate in.
 
-# DATABASE [PostgreSQL]
+## DATABASE
 Edit settings.py for db
 'Students Activities' requires ArrayField, supported in psgsql, not dbsqlite3
 
 Alternative would be to have a ManyToManyRel btn Student and Activities models
 
-# Auth
+## Auth
 Uses django-rest token models and auth classes
 
 # EXPOSED ENDPOINTS
@@ -44,3 +44,13 @@ required: search_params in form of {q=''}
 'api/students/edit/<str:pk>
 required: student_id
 ```
+
+# GETTING STARTED
+install dependencies in requirements.txt
+
+$ pip install -r requirements.txt
+
+then run the server once all dependencies are installed
+$ python manage.py runserver
+
+THANK YOU

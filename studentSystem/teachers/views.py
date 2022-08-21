@@ -4,14 +4,10 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view;
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth import authenticate
-
 
 from .forms import teacherRegForm
 from .models import Teacher;
-
-# Create your views here.
 
 # register as a teacher
 @api_view(['POST'])
@@ -66,6 +62,6 @@ def login(request):
     else:
         # generate token, and send as a bearer token
         token = Token.create(user=user)
-        
-    
-    return Response(data='')
+        response = Response(status=200)
+        response['Authentication'] = f'Bearer {token}'
+        return response

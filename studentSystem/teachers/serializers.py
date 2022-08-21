@@ -2,7 +2,6 @@ from .models import Teacher, Student;
 from rest_framework.serializers import ModelSerializer;
 
 
-
 # serialize student data
 class StudentSerializer(ModelSerializer):
     class Meta:

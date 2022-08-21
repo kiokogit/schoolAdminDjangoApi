@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,11 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'rest-framework',
-    'rest_framework.authtoken'
+    'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     
-    'students',
     'teachers',
     
 ]
@@ -84,13 +84,27 @@ WSGI_APPLICATION = 'studentSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+''' DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+} '''
+
+DATABASES = {
+    'default':{
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME':'testnode',
+        'USER':'postgres',
+        'PASSWORD':'admin',
+        'HOST':'localhost',
+        'PORT':''
+    }
 }
 
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -127,7 +141,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'profiles')
 STATIC_URL = '/static/'
 
 # Default primary key field type
@@ -135,3 +149,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CORS_ALLOW_ALL_ORIGIN = True
+
+APPEND_SLASH=False
+
+AUTH_USER_MODEL='teachers.Teacher'

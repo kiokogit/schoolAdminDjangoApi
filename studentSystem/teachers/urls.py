@@ -8,19 +8,19 @@ from . import views, studentViews;
 # teachers can:
 urlpatterns = [
     # register
-    path('register/', views.register, name='register'),
+    path('register/', views.register),
     # login
-    path('login/', views.login, name='login'),
+    path('login/', views.login),
     
     # add a new student
-    path('student/new', studentViews.add_student, name='new_student'),
+    path('students/new', studentViews.add_student),
     # get student details
-    path('students/get/<str:id>',studentViews.get_student, name='get_student'),
+    path('students/get/<str:pk>',studentViews.get_student),
     # update or delete student details
-    path('students/<str:id>',studentViews.edit_student, name='update_student'),
-    # filter students by id
-    path('students/search?<id>',studentViews.search_student, name='search_student'),
+    path('students/edit/<str:pk>',studentViews.edit_student),
+    # filter students by std id - query params: 'q'
+    path('students/search',studentViews.search_student),
 ]
 
 # for static files
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

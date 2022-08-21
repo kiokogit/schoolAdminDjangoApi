@@ -25,7 +25,7 @@ def register(request):
         return Response(status=400, data='User already exists')
     except:
         # populate form
-        form = teacherRegForm({'email':email, 'password1':password1, 'password2':password2, 'username':email, 'password':password1});
+        form = teacherRegForm({'email':email, 'password1':password1, 'password2':password2, 'username':email});
         # validate form, save, return created
         if form.is_valid():
             form.save(commit=True);

@@ -25,7 +25,7 @@ def register(request):
         return Response(status=400, data='User already exists')
     except:
         # populate form
-        form = teacherRegForm({'email':email, 'password1':password1, 'password2':password2, 'username':email});
+        form = teacherRegForm({'email':email, 'password1':password1, 'password2':password2});
         # validate form, save, return created
         if form.is_valid():
             form.save(commit=True);
@@ -63,6 +63,6 @@ def login(request):
     else:
         # generate token, and send as a bearer token
         token = Token.objects.create(user=user)
-        response = Response(status=200)
+        response = Response(status=200, data='You are successfully logged in')
         response['Authentication'] = f'Bearer {token.key}'
         return response

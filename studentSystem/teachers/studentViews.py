@@ -18,7 +18,7 @@ def add_student(request):
     else:
         # log out errors - use an app logger, return bad request
         print(form.errors.as_json)
-        return Response(status=400) #bad request
+        return Response(status=400, data='Bad Request. Student Exists') #bad request
     
 # UPDATE, DEL ONE STUDENT
 @api_view(['PATCH', 'DELETE'])

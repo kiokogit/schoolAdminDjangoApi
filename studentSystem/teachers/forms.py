@@ -1,11 +1,12 @@
 from django.forms import ModelForm;
+from django.contrib.auth.forms import UserCreationForm
 from .models import Student, Teacher
 
 # teacher reg form
-class teacherRegForm(ModelForm):
+class teacherRegForm(UserCreationForm):
     class Meta:
         model = Teacher;
-        fields = '__all__'
+        fields = ['username', 'email', 'password1', 'password2']
         
 class studentRegForm(ModelForm):
     class Meta:

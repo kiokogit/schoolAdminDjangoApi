@@ -62,7 +62,7 @@ def login(request):
         return Response(status=401, data='Invalid Credentials') #invalid password.
     else:
         # generate token, and send as a bearer token
-        token = Token.create(user=user)
+        token = Token.objects.create(user=user)
         response = Response(status=200)
         response['Authentication'] = f'Bearer {token.key}'
         return response

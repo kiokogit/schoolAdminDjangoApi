@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'studentSystem.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'testnode',
+        'NAME':'schoolSys',
         'USER':'postgres',
         'PASSWORD':'admin',
         'HOST':'localhost',

@@ -1,5 +1,5 @@
-from .serializers import StudentSerializer
-from .models import Student
+from ..serializers import StudentSerializer
+from ..models import Student
 
 from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication

@@ -5,8 +5,8 @@ from rest_framework.authtoken.models import Token
 
 from django.contrib.auth import authenticate
 
-from .forms import teacherRegForm
-from .models import Teacher;
+from ..forms import teacherRegForm
+from ..models import Teacher;
 
 # register as a teacher
 @api_view(['POST'])

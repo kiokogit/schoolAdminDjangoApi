@@ -1,5 +1,5 @@
-from .models import Teacher
-from .serializers import TeacherSerializer
+from ..models import Teacher
+from ..serializers import TeacherSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response

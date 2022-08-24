@@ -1,6 +1,6 @@
-from .forms import studentRegForm
-from .serializers import StudentSerializer
-from .models import Student;
+from ..forms import studentRegForm
+from ..serializers import StudentSerializer
+from ..models import Student;
 
 from rest_framework.decorators import api_view, authentication_classes
 from rest_framework.response import Response

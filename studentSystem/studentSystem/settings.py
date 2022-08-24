@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'studentSystem.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'schoolSys',
+        'NAME':'system',
         'USER':'postgres',
         'PASSWORD':'admin',
         'HOST':'localhost',
@@ -105,6 +105,13 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
     )
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

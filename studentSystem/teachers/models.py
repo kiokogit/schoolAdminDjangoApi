@@ -5,13 +5,8 @@ from django.contrib.postgres.fields import ArrayField
 
 # teacher model, abstract user
 class Teacher(AbstractUser):
-    # email is also the username
-    email = models.EmailField( max_length=250, unique=True, null=True);
-    date_joined=models.DateTimeField(auto_now=True)
-    
-    USERNAME_FIELD='email';
-    REQUIRED_FIELDS=['username']
-    
+    isStaff=models.BooleanField(default=True)
+    email=models.EmailField(max_length=250, unique=True)
     # str representation
     def __str__(self):
         return self.email

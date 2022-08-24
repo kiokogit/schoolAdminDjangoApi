@@ -5,15 +5,18 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
+from django.http import Http404
+
 class TeacherView(APIView):
+    
+    model = Teacher
     
     # get teacher object
     def get_teacher(self, email):
         try:
-            teacher = Teacher.objects.get(email = email)
-            return teacher
+            return self.model.objects.get(email = email)
         except:
-            return 'NOTFOUND'
+            raise Http404
         
     # register user
     def post(self, request):
@@ -29,11 +32,9 @@ class TeacherView(APIView):
 class TeacherDetails(TeacherView):
     
     def post(self, request):
-          teacher = self.get_teacher(request.data.get('email'))
-          if teacher !='NOTFOUND':
-              token = Token.objects.create(user=teacher)
-              response = Response(data='User Logged in successfully', status=200)
-              response['Authentication'] = f'Bearer {token.key}'
-              return response
-          else:
-              return Response(data='User not found', status=400)
+        teacher = self.get_teacher(request.data.get('email'))
+        # generate token, get_or_create
+        token = Token.objects.get_or_create(user=teacher)
+        response = Response(data='User Logged in successfully', status=200)
+        response['Authentication'] = f'Bearer {token.key}'
+        return response

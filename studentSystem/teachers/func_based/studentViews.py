@@ -1,4 +1,4 @@
-from ..forms import studentRegForm
+from .forms import studentRegForm
 from ..serializers import StudentSerializer
 from ..models import Student;
 

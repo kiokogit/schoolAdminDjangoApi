@@ -1,6 +1,6 @@
 from django.forms import ModelForm;
 from django.contrib.auth.forms import UserCreationForm
-from .models import Student, Teacher
+from ..models import Student, Teacher
 
 # teacher reg form
 class teacherRegForm(UserCreationForm):
